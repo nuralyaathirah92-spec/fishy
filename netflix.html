@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Anime Watchlist ✨</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins','Segoe UI',sans-serif;
+  background:linear-gradient(180deg,#eefcff,#f7f3ff,#ffffff);
+  color:#4b6f75;
+  overflow-x:hidden;
+}
+
+/* ===== Floating Bubbles ===== */
+.bubble{
+  position:fixed;
+  bottom:-60px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:rgba(180,240,255,.35);
+  animation:floatBubble linear infinite;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes floatBubble{
+  from{transform:translateY(0);opacity:.6}
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* ===== Navbar ===== */
+header{
+  background:rgba(255,255,255,0.9);
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(8px);
+  z-index:10;
+}
+nav{
+  max-width:1100px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:1.5rem;
+  font-weight:bold;
+  color:#3ccfd5;
+}
+.nav-btn{
+  margin-left:18px;
+  padding:10px 20px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#c8f7f4,#e2d6ff);
+  font-weight:600;
+  transition:.3s;
+  text-decoration:none;
+  color:inherit;
+}
+.nav-btn:hover{
+  transform:translateY(-4px);
+  background:linear-gradient(135deg,#6fd3d3,#cbbcff);
+  color:#fff;
+}
+
+/* ===== Page Header ===== */
+.page-header{
+  text-align:center;
+  padding:60px 20px 30px;
+  position:relative;
+  z-index:1;
+}
+.page-header h1{
+  font-size:3rem;
+  color:#7aaeff;
+}
+.page-header p{opacity:.85}
+
+/* ===== Anime Card ===== */
+.anime-container{
+  max-width:900px;
+  margin:40px auto 80px;
+  background:white;
+  border-radius:30px;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+}
+
+/* Sparkle */
+.anime-container::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.6) 2px,transparent 3px),
+    radial-gradient(circle at 70% 60%,rgba(255,255,255,.5) 2px,transparent 3px),
+    radial-gradient(circle at 40% 80%,rgba(255,255,255,.4) 2px,transparent 3px);
+  opacity:.4;
+  pointer-events:none;
+  animation:sparkle 4s ease-in-out infinite;
+}
+@keyframes sparkle{
+  0%,100%{opacity:.3}
+  50%{opacity:.6}
+}
+
+/* ===== Image Area ===== */
+.anime-img{
+  height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f5f7ff;
+  position:relative;
+  overflow:hidden;
+}
+.anime-img img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:16px;
+  transition:.6s;
+}
+.anime-img img:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 30px rgba(160,220,255,.6);
+}
+
+/* ===== Netflix Badge ===== */
+.netflix-badge{
+  position:absolute;
+  top:18px;
+  right:18px;
+  background:rgba(0,0,0,.75);
+  padding:8px 12px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.netflix-badge img{
+  width:22px;
+  height:auto;
+}
+.netflix-badge span{
+  color:white;
+  font-size:13px;
+  font-weight:600;
+}
+
+/* Fade animation */
+.fade{animation:fadeSlide .6s ease}
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== Info ===== */
+.anime-info{
+  padding:25px;
+  text-align:center;
+}
+.anime-info h2{margin:10px 0}
+.anime-info p{opacity:.85;line-height:1.6}
+
+/* ===== Buttons ===== */
+.btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,.9);
+  border:none;
+  font-size:26px;
+  padding:12px 18px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover{background:#ccefff}
+.prev{left:15px}
+.next{right:15px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Fishy ♡</div>
+    <div>
+      <a href="anime.html" class="nav-btn">Home</a>
+      <a href="hobby.html" class="nav-btn">Hobby</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<div class="page-header">
+  <h1>🍿 Anime I Watch on Netflix</h1>
+  <p>Comfort anime, chaos, and emotions ✨</p>
+</div>
+
+<div class="anime-container">
+
+  <div class="anime-img">
+    <img id="animeImage" src="images/spyxfamily.jpg">
+    <div class="netflix-badge">
+      <img src="logo/netflix.png">
+      <span>Netflix</span>
+    </div>
+  </div>
+
+  <div class="anime-info">
+    <h2 id="animeTitle">SPY x FAMILY</h2>
+    <p id="animeDesc">A wholesome spy × assassin × telepath family.</p>
+  </div>
+
+  <button class="btn prev" onclick="changeAnime(-1)">❮</button>
+  <button class="btn next" onclick="changeAnime(1)">❯</button>
+</div>
+
+<script>
+/* Bubbles */
+for(let i=0;i<18;i++){
+  const b=document.createElement("div");
+  b.className="bubble";
+  b.style.left=Math.random()*100+"vw";
+  b.style.width=b.style.height=10+Math.random()*25+"px";
+  b.style.animationDuration=8+Math.random()*10+"s";
+  document.body.appendChild(b);
+}
+
+/* Anime data */
+const animeList=[
+  {title:"SPY x FAMILY",desc:"A wholesome spy × assassin × telepath family.",img:"images/spyxfamily.jpg"},
+  {title:"The Apothecary Diaries",desc:"A clever girl solves palace mysteries.",img:"images/maomaoopening.jpg"},
+  {title:"7th Time Loop",desc:"Reliving life again and again to change fate.",img:"images/7thloop.jpg"},
+  {title:"Komi Can’t Communicate",desc:"A gentle story about friendship and anxiety.",img:"images/komimute.jpg"},
+  {title:"Solo Leveling",desc:"From weakest hunter to strongest.",img:"images/sololevelling.jpg"},
+  {title:"My Goofy Boss",desc:"Funny yet heartwarming workplace story.",img:"images/goofyboss.jpg"}
+];
+
+let index=0;
+const img=document.getElementById("animeImage");
+
+function changeAnime(step){
+  index+=step;
+  if(index<0) index=animeList.length-1;
+  if(index>=animeList.length) index=0;
+
+  img.classList.remove("fade");
+  void img.offsetWidth;
+  img.classList.add("fade");
+
+  animeTitle.innerText=animeList[index].title;
+  animeDesc.innerText=animeList[index].desc;
+  img.src=animeList[index].img;
+}
+</script>
+
+</body>
+</html>

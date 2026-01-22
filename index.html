@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fishy | Home</title>
+
+  <link rel="stylesheet" href="anime.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #d8ffff, #eef4ff, #ffffff);
+      color: #4b6f75;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== BACKGROUND EFFECTS ===== */
+    .bg-blobs span{
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .35;
+      animation: floatBlob 20s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+    .bg-blobs span:nth-child(1){
+      width: 300px; height: 300px;
+      background:#9be7ff; top:10%; left:-80px;
+    }
+    .bg-blobs span:nth-child(2){
+      width: 260px; height: 260px;
+      background:#cbbcff; bottom:20%; right:-60px;
+      animation-duration: 25s;
+    }
+    .bg-blobs span:nth-child(3){
+      width: 200px; height: 200px;
+      background:#ffb6d5; top:60%; left:20%;
+      animation-duration: 30s;
+    }
+    @keyframes floatBlob{
+      to{ transform: translateY(-60px) translateX(40px); }
+    }
+
+    /* ===== Navbar ===== */
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #3ccfd5;
+      text-shadow: 0 0 8px rgba(60, 207, 213, 0.45);
+    }
+
+    .nav-links a { margin-left: 20px; }
+
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #c8f7f4, #e2d6ff);
+      box-shadow: 0 6px 14px rgba(120, 200, 220, 0.45);
+      transition: all 0.35s ease;
+      font-weight: 600;
+    }
+
+    .nav-btn:hover {
+      background: linear-gradient(135deg, #6fd3d3, #cbbcff);
+      color: white;
+      transform: translateY(-4px) scale(1.07);
+      box-shadow: 0 10px 22px rgba(180, 160, 255, 0.45);
+    }
+
+    /* ===== Home Section ===== */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      margin-bottom: 16px;
+      color: #2fc4cb;
+      text-shadow: 0 4px 18px rgba(47, 196, 203, 0.45);
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* ===== CARD GLOW ===== */
+    .hero-card {
+      background: linear-gradient(180deg, #ffffff, #eafcff);
+      border-radius: 30px;
+      padding: 38px;
+      box-shadow: 0 18px 40px rgba(90, 220, 230, 0.45);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: glow 5s infinite alternate;
+    }
+
+    @keyframes glow{
+      to{ box-shadow: 0 24px 60px rgba(160, 180, 255, 0.55); }
+    }
+
+    .hero-card img {
+      max-width: 100%;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      animation: floatImg 4s ease-in-out infinite;
+    }
+
+    @keyframes floatImg{
+      50%{ transform: translateY(-12px); }
+    }
+
+    /* ===== BUBBLES ===== */
+    .bubble{
+      position: fixed;
+      bottom:-20px;
+      width:8px;
+      height:8px;
+      background: rgba(180,240,255,.6);
+      border-radius:50%;
+      animation: bubbleUp linear infinite;
+      z-index:-1;
+    }
+    @keyframes bubbleUp{
+      to{
+        transform: translateY(-120vh);
+        opacity:0;
+      }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🌈 BACKGROUND BLOBS -->
+<div class="bg-blobs">
+  <span></span><span></span><span></span>
+</div>
+
+<header>
+  <nav>
+    <div class="logo">Fishy ♡</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="hobby.html" class="nav-btn">Hobby</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>WELCOME ✨</h1>
+    <p>
+      Welcome to my website.  
+      I’m Alya Athirah and I will be escorting you through this website.
+      Click on <b>About</b> to know more about me or <b>Hobby</b> to see my daily hobby routine.
+      Have fun! 🌸
+    </p>
+
+    <p style="margin-top:16px; color:#8aaeb5;">
+      ✿ introvert • ✿ crazy • ✿ fish
+    </p>
+  </div>
+
+  <div class="hero-card">
+    <img src="images/img.png" alt="My Photo">
+    <p style="margin-top:12px; color:#9aa;">
+      <span style="color:#ffb6d5;">♡</span>
+      pastel cyan · lavender · blush
+      <span style="color:#cbbcff;">♡</span>
+    </p>
+  </div>
+</section>
+
+<script>
+/* bubbles generator */
+for(let i=0;i<25;i++){
+  const b=document.createElement("div");
+  b.className="bubble";
+  b.style.left=Math.random()*100+"%";
+  b.style.animationDuration=6+Math.random()*6+"s";
+  document.body.appendChild(b);
+}
+</script>
+
+</body>
+</html>

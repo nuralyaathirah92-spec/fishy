@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Arts 🎨</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins','Segoe UI',sans-serif;
+  background:linear-gradient(180deg,#eefcff,#f7f3ff,#ffffff);
+  color:#4b6f75;
+  overflow-x:hidden;
+}
+
+/* ===== Floating Bubbles ===== */
+.bubble{
+  position:fixed;
+  bottom:-60px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:rgba(180,240,255,.35);
+  animation:floatBubble linear infinite;
+  pointer-events:none;
+}
+@keyframes floatBubble{
+  from{transform:translateY(0);opacity:.6}
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* ===== Navbar ===== */
+header{
+  background:rgba(255,255,255,0.9);
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(8px);
+  z-index:10;
+}
+nav{
+  max-width:1100px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:1.5rem;
+  font-weight:bold;
+  color:#3ccfd5;
+}
+.nav-btn{
+  margin-left:18px;
+  padding:10px 20px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#c8f7f4,#e2d6ff);
+  font-weight:600;
+  transition:.3s;
+}
+.nav-btn:hover{
+  transform:translateY(-4px);
+  background:linear-gradient(135deg,#6fd3d3,#cbbcff);
+  color:#fff;
+}
+
+/* ===== Page Header ===== */
+.page-header{
+  text-align:center;
+  padding:60px 20px 30px;
+}
+.page-header h1{
+  font-size:3rem;
+  color:#7aaeff;
+}
+
+/* ===== Art Card ===== */
+.art-container{
+  max-width:900px;
+  margin:40px auto;
+  background:white;
+  border-radius:30px;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);
+  overflow:hidden;
+  position:relative;
+}
+
+/* Sparkle overlay */
+.art-container::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.6) 2px,transparent 3px),
+    radial-gradient(circle at 70% 60%,rgba(255,255,255,.5) 2px,transparent 3px),
+    radial-gradient(circle at 40% 80%,rgba(255,255,255,.4) 2px,transparent 3px);
+  opacity:.4;
+  pointer-events:none;
+  animation:sparkle 4s ease-in-out infinite;
+}
+@keyframes sparkle{
+  0%,100%{opacity:.3}
+  50%{opacity:.6}
+}
+
+.art-img{
+  height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f5f7ff;
+  overflow:hidden;
+}
+
+.art-img img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:14px;
+  transition:.6s;
+}
+.art-img img:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 30px rgba(160,220,255,.6);
+}
+
+/* Fade animation */
+.fade{
+  animation:fadeSlide .6s ease;
+}
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.art-info{
+  padding:25px;
+  text-align:center;
+}
+.art-info h2{
+  margin:10px 0;
+}
+.art-info p{
+  opacity:.85;
+}
+
+/* ===== Buttons ===== */
+.btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,.9);
+  border:none;
+  font-size:26px;
+  padding:12px 18px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover{
+  background:#ccefff;
+}
+.prev{left:15px}
+.next{right:15px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Fishy ♡</div>
+    <div>
+      <a href="anime.html" class="nav-btn">Home</a>
+      <a href="hobby.html" class="nav-btn">Hobby</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<div class="page-header">
+  <h1>🎨 My Artworks</h1>
+  <p>Soft creations made with heart ✨</p>
+</div>
+
+<div class="art-container">
+
+  <div class="art-img">
+    <img id="artImage" src="images/art6.jpeg">
+  </div>
+
+  <div class="art-info">
+    <h2 id="artTitle">Dream of happiness</h2>
+    <p id="artDesc">
+      An oc of my background story without coruption where she is happy and normal if she in another life.
+    </p>
+  </div>
+
+  <button class="btn prev" onclick="changeArt(-1)">❮</button>
+  <button class="btn next" onclick="changeArt(1)">❯</button>
+</div>
+
+<script>
+/* ===== Floating Bubbles Generator ===== */
+for(let i=0;i<18;i++){
+  const b=document.createElement("div");
+  b.className="bubble";
+  b.style.left=Math.random()*100+"vw";
+  b.style.width=b.style.height=10+Math.random()*25+"px";
+  b.style.animationDuration=8+Math.random()*10+"s";
+  document.body.appendChild(b);
+}
+
+/* ===== Art Data ===== */
+const arts=[
+  {title:"Pastel Dream",desc:"A soft pastel illustration inspired by calm emotions.",img:"images/art.jpeg"},
+  {title:"Busy in a mafia work",desc:"Artwork inspired by water mafia story where alpha x yn trend.",img:"images/art2.jpeg"},
+  {title:"Character Sketch",desc:"Original character sketch created during free time.",img:"images/art3.jpeg"},
+  {title:"Cale birthday",desc:"An art of a person who is an assasin got reincarnated into a noble life.",img:"images/art4.jpeg"},
+  {title:"Abstract Mood",desc:"An abstract piece expressing emotions through color.",img:"images/art5.jpeg"}
+];
+
+let index=0;
+const img=document.getElementById("artImage");
+
+function changeArt(step){
+  index+=step;
+  if(index<0) index=arts.length-1;
+  if(index>=arts.length) index=0;
+
+  img.classList.remove("fade");
+  void img.offsetWidth; // restart animation
+  img.classList.add("fade");
+
+  document.getElementById("artTitle").innerText=arts[index].title;
+  document.getElementById("artDesc").innerText=arts[index].desc;
+  img.src=arts[index].img;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Hobby | Layers</title>
+
+<link rel="stylesheet" href="anime.css">
+
+<style>
+/* ===== Base ===== */
+body{
+  margin:0;
+  font-family:'Segoe UI','Poppins',sans-serif;
+  background:linear-gradient(180deg,#e8ffff,#f5f7ff,#ffffff);
+  color:#4b6f75;
+  overflow-x:hidden;
+}
+
+a{text-decoration:none;color:inherit}
+
+/* ===== Floating Bubbles ===== */
+.bubble{
+  position:fixed;
+  bottom:-60px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:rgba(180,240,255,.35);
+  animation:floatBubble linear infinite;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes floatBubble{
+  from{transform:translateY(0);opacity:.6}
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* ===== Navbar ===== */
+header{
+  background:rgba(255,255,255,.9);
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(8px);
+}
+nav{
+  max-width:1100px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:1.5rem;
+  font-weight:bold;
+  color:#3ccfd5;
+}
+.nav-btn{
+  margin-left:18px;
+  padding:10px 20px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#c8f7f4,#e2d6ff);
+  font-weight:600;
+  transition:.35s;
+}
+.nav-btn:hover{
+  background:linear-gradient(135deg,#6fd3d3,#cbbcff);
+  color:#fff;
+  transform:translateY(-4px) scale(1.05);
+}
+
+/* ===== Layer ===== */
+.layer{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:80px 24px;
+  position:relative;
+}
+.layer::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.5),transparent 60%);
+  pointer-events:none;
+}
+
+.layer-inner{
+  max-width:1100px;
+  margin:auto;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+
+/* Reverse layout */
+.reverse{direction:rtl}
+.reverse>*{direction:ltr}
+
+/* ===== Text ===== */
+.layer-title{
+  font-size:3rem;
+  margin-bottom:10px;
+}
+.layer-sub{
+  margin-bottom:30px;
+  opacity:.85;
+  line-height:1.7;
+}
+
+.open-btn{
+  padding:14px 34px;
+  border-radius:999px;
+  border:none;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.4s;
+}
+.open-btn:hover{
+  transform:translateY(-6px) scale(1.1);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+/* ===== Divider Wave ===== */
+.wave{
+  width:100%;
+  height:120px;
+  display:block;
+}
+
+/* ===== Sections ===== */
+.game{
+  background:linear-gradient(180deg,#ffffff,#eaffff);
+}
+.game .layer-title{color:#2fc4cb}
+.game .open-btn{
+  background:linear-gradient(135deg,#9be7ff,#cafff8);
+}
+
+.art{
+  background:linear-gradient(180deg,#f3ecff,#ffffff);
+}
+.art .layer-title{color:#8b7dff}
+.art .open-btn{
+  background:linear-gradient(135deg,#cbbcff,#e3d7ff);
+}
+
+.manhwa{
+  background:linear-gradient(180deg,#fff0f6,#ffffff);
+}
+.manhwa .layer-title{color:#ff8fb6}
+.manhwa .open-btn{
+  background:linear-gradient(135deg,#ffc1d9,#ffe3ee);
+}
+
+/* ===== Scroll Animation ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .layer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Fishy ♡</div>
+    <div>
+      <a href="anime.html" class="nav-btn">Home</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="hobby.html" class="nav-btn">Hobby</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== GAME ===== -->
+<section class="layer game">
+  <div class="layer-inner reveal">
+
+    <div>
+      <h1 class="layer-title">Game 🎮</h1>
+      <p class="layer-sub">Types of games that I play for fun and comfort.</p>
+      <a href="art.html" class="open-btn">Explore Game</a>
+    </div>
+
+    <div>
+      <img src="images/consolegame2.png" class="float-img" alt="Game Art">
+    </div>
+
+  </div>
+</section>
+
+
+<svg class="wave" viewBox="0 0 1440 120">
+  <path fill="#f3ecff" d="M0,64 C240,120 480,0 720,32 960,64 1200,96 1440,64 L1440,0 L0,0Z"></path>
+</svg>
+
+<!-- ===== ART ===== -->
+<section class="layer art">
+  <div class="layer-inner reverse reveal">
+
+    <div>
+      <h1 class="layer-title">Art 🎨</h1>
+      <p class="layer-sub">Creativity, imagination, and personal expression.</p>
+      <a href="game.html" class="open-btn">Explore Art</a>
+    </div>
+
+    <div>
+      <img src="images/art7hehe.png" class="float-img" alt="My Art">
+    </div>
+
+  </div>
+</section>
+
+
+<svg class="wave" viewBox="0 0 1440 120">
+  <path fill="#fff0f6" d="M0,64 C240,120 480,0 720,32 960,64 1200,96 1440,64 L1440,0 L0,0Z"></path>
+</svg>
+
+<!-- ===== ANIME ===== -->
+<section class="layer manhwa">
+  <div class="layer-inner reveal">
+
+    <div>
+      <h1 class="layer-title">Anime ✨</h1>
+      <p class="layer-sub">Anime is my comfort, inspiration, and escape.</p>
+      <a href="netflix.html" class="open-btn">Explore Anime</a>
+    </div>
+
+    <div>
+      <img src="images/maomao3.png" class="float-img" alt="Anime Illustration">
+    </div>
+
+  </div>
+</section>
+
+<script>
+/* Floating bubbles */
+for(let i=0;i<22;i++){
+  const b=document.createElement("div");
+  b.className="bubble";
+  b.style.left=Math.random()*100+"vw";
+  b.style.width=b.style.height=10+Math.random()*25+"px";
+  b.style.animationDuration=8+Math.random()*12+"s";
+  document.body.appendChild(b);
+}
+
+/* Scroll reveal */
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+      el.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
